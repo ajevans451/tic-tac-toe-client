@@ -10,6 +10,6 @@ $(() => {
   // your JS code goes here
   $('#sign-up-form').on('submit', submitEvents.signUp)
   $('#sign-in-form').on('submit', submitEvents.signIn)
-  $('#change-password-form').on('submit', submitEvents.changePassword)
+  $('#change-password-form').on('submit', submitEvents.changePW)
   $('#sign-out-form').on('submit', submitEvents.signOut)
 })

@@ -1,6 +1,7 @@
 'use strict'
 const formFields = require('./../../../lib/get-form-fields')
 const api = require('./api')
+const ui = require('./ui')
 const signUp = (event) => {
   event.preventDefault()
   const form = event.target
@@ -8,21 +9,39 @@ const signUp = (event) => {
   // console.log(data)
   api.signUp(data)
     // successful
-    .then(function () {
-      console.log('api signup firing')
-    })
+    .then(ui.signUpSuccess)
     // failure
-    .catch(function () {
-      console.log('api signup not firing')
-    })
+    .catch(ui.signUpFailure)
 }
 const signIn = (event) => {
   event.preventDefault()
-  console.log('sign in firing')
+  const form = event.target
+  const data = formFields(form)
+  // console.log(data)
+  api.signIn(data)
+    // successful
+    .then(function () {
+      console.log('api signin firing')
+    })
+    // failure
+    .catch(function () {
+      console.log('api signin not firing')
+    })
 }
-const changePassword = (event) => {
+const changePW = (event) => {
   event.preventDefault()
-  console.log('change password firing')
+  const form = event.target
+  const data = formFields(form)
+  // console.log(data)
+  api.changePW(data)
+    // successful
+    .then(function () {
+      console.log('api changepw firing')
+    })
+    // failure
+    .catch(function () {
+      console.log('api changepw not firing')
+    })
 }
 const signOut = (event) => {
   event.preventDefault()
@@ -31,6 +50,6 @@ const signOut = (event) => {
 module.exports = {
   signUp,
   signIn,
-  changePassword,
+  changePW,
   signOut
 }
