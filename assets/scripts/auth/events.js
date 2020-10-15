@@ -7,8 +7,14 @@ const signUp = (event) => {
   const data = formFields(form)
   // console.log(data)
   api.signUp(data)
-    .then(console.log('api signup firing'))
-    .catch(console.log('api signup not firing'))
+    // successful
+    .then(function () {
+      console.log('api signup firing')
+    })
+    // failure
+    .catch(function () {
+      console.log('api signup not firing')
+    })
 }
 const signIn = (event) => {
   event.preventDefault()
