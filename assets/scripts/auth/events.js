@@ -13,16 +13,16 @@ const signUp = (event) => {
     // failure
     .catch(ui.signUpFailure)
 }
-const signIn = (event) => {
+const logIn = (event) => {
   event.preventDefault()
   const form = event.target
   const data = formFields(form)
   // console.log(data)
-  api.signIn(data)
+  api.logIn(data)
     // successful
-    .then(ui.signInSuccess)
+    .then(ui.logInSuccess)
     // failure
-    .catch(ui.signInFailure)
+    .catch(ui.logInFailure)
 }
 const changePW = (event) => {
   event.preventDefault()
@@ -35,15 +35,15 @@ const changePW = (event) => {
     // failure
     .catch(ui.pwChangeFailure)
 }
-const signOut = (event) => {
+const logOut = (event) => {
   event.preventDefault()
-  api.signOut()
-    .then(ui.signOutSuccess)
-    .catch(ui.signOutFailure)
+  api.logOut()
+    .then(ui.logOutSuccess)
+    .catch(ui.logOutFailure)
 }
 module.exports = {
   signUp,
-  signIn,
+  logIn,
   changePW,
-  signOut
+  logOut
 }

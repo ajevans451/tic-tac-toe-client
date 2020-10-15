@@ -6,7 +6,7 @@ const signUpSuccess = function (response) {
 const signUpFailure = function (error) {
   $('#message').text('Sign up failed, please retry')
 }
-const signInSuccess = function (response) {
+const logInSuccess = function (response) {
   $('#message').text('Signed in successfully')
   store.user = response.user
   $('#change-password-form').show()
@@ -14,7 +14,7 @@ const signInSuccess = function (response) {
   $('#sign-up-form').hide()
   $('#sign-in-form').hide()
 }
-const signInFailure = function (error) {
+const logInFailure = function (error) {
   $('#message').text('Could not sign in, please try again')
 }
 const pwChangeSuccess = function(response) {
@@ -23,7 +23,7 @@ const pwChangeSuccess = function(response) {
 const pwChangeFailure = function(error) {
   $('#message').text('Password change failed, please retry')
 }
-const signOutSuccess = function(response) {
+const logOutSuccess = function(response) {
   $('#message').text('Signed out successfully')
   store.user = null
   $('#change-password-form').hide()
@@ -31,16 +31,16 @@ const signOutSuccess = function(response) {
   $('#sign-up-form').show()
   $('#sign-in-form').show()
 }
-const signOutFailure = function (error) {
+const logOutFailure = function (error) {
   $('#message').text('Could not sign out, please try again')
 }
 module.exports = {
   signUpSuccess,
   signUpFailure,
-  signInSuccess,
-  signInFailure,
+  logInSuccess,
+  logInFailure,
   pwChangeSuccess,
   pwChangeFailure,
-  signOutSuccess,
-  signOutFailure
+  logOutSuccess,
+  logOutFailure
 }

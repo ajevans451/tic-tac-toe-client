@@ -8,7 +8,7 @@ const signUp = function (data) {
     data: data
   })
 }
-const signIn = function (data) {
+const logIn = function (data) {
   return $.ajax({
     url: config.apiUrl + '/sign-in',
     method: 'POST',
@@ -25,7 +25,7 @@ const changePW = function (data) {
     data: data
   })
 }
-const signOut = function (data) {
+const logOut = function (data) {
   return $.ajax({
     url: config.apiUrl + '/sign-out',
     method: 'DELETE',
@@ -36,7 +36,7 @@ const signOut = function (data) {
 }
 module.exports = {
   signUp,
-  signIn,
+  logIn,
   changePW,
-  signOut
+  logOut
 }
