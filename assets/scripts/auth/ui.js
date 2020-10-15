@@ -9,6 +9,10 @@ const signUpFailure = function (error) {
 const signInSuccess = function (response) {
   $('#message').text('Signed in successfully')
   store.user = response.user
+  $('#change-password-form').show()
+  $('#sign-out-form').show()
+  $('#sign-up-form').hide()
+  $('#sign-in-form').hide()
 }
 const signInFailure = function (error) {
   $('#message').text('Could not sign in, please try again')
@@ -22,6 +26,10 @@ const pwChangeFailure = function(error) {
 const signOutSuccess = function(response) {
   $('#message').text('Signed out successfully')
   store.user = null
+  $('#change-password-form').hide()
+  $('#sign-out-form').hide()
+  $('#sign-up-form').show()
+  $('#sign-in-form').show()
 }
 const signOutFailure = function (error) {
   $('#message').text('Could not sign out, please try again')
