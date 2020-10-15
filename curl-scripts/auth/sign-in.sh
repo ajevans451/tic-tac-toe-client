@@ -1,5 +1,5 @@
 #!/bin/bash
-
+#curl works
 API="https://tic-tac-toe-api-development.herokuapp.com"
 URL_PATH="/sign-in"
 
