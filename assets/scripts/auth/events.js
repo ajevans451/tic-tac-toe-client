@@ -20,13 +20,9 @@ const signIn = (event) => {
   // console.log(data)
   api.signIn(data)
     // successful
-    .then(function () {
-      console.log('api signin firing')
-    })
+    .then(ui.signInSuccess)
     // failure
-    .catch(function () {
-      console.log('api signin not firing')
-    })
+    .catch(ui.signInFailure)
 }
 const changePW = (event) => {
   event.preventDefault()
@@ -35,17 +31,15 @@ const changePW = (event) => {
   // console.log(data)
   api.changePW(data)
     // successful
-    .then(function () {
-      console.log('api changepw firing')
-    })
+    .then(ui.pwChangeSuccess)
     // failure
-    .catch(function () {
-      console.log('api changepw not firing')
-    })
+    .catch(ui.pwChangeFailure)
 }
 const signOut = (event) => {
   event.preventDefault()
-  console.log('sign out firing')
+  api.signOut()
+    .then(ui.signOutSuccess)
+    .catch(ui.signOutFailure)
 }
 module.exports = {
   signUp,

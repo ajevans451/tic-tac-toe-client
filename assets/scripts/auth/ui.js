@@ -4,9 +4,35 @@ const signUpSuccess = function (response) {
   $('#message').text('Thanks for signing up ' + response.user.email)
 }
 const signUpFailure = function (error) {
-  $('#message').text('Sign up failed, please try again')
+  $('#message').text('Sign up failed, please retry')
+}
+const signInSuccess = function (response) {
+  $('#message').text('Signed in successfully')
+  store.user = response.user
+}
+const signInFailure = function (error) {
+  $('#message').text('Could not sign in, please try again')
+}
+const pwChangeSuccess = function(response) {
+  $('#message').text('Password change successful')
+}
+const pwChangeFailure = function(error) {
+  $('#message').text('Password change failed, please retry')
+}
+const signOutSuccess = function(response) {
+  $('#message').text('Signed out successfully')
+  store.user = null
+}
+const signOutFailure = function (error) {
+  $('#message').text('Could not sign out, please try again')
 }
 module.exports = {
   signUpSuccess,
-  signUpFailure
+  signUpFailure,
+  signInSuccess,
+  signInFailure,
+  pwChangeSuccess,
+  pwChangeFailure,
+  signOutSuccess,
+  signOutFailure
 }
