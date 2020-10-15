@@ -9,9 +9,9 @@ const submitEvents = require('./auth/events')
 $(() => {
   // your JS code goes here
   $('#sign-up-form').on('submit', submitEvents.signUp)
-  $('#sign-in-form').on('submit', submitEvents.signIn)
+  $('#sign-in-form').on('submit', submitEvents.logIn)
   $('#change-password-form').on('submit', submitEvents.changePW)
-  $('#sign-out-form').on('submit', submitEvents.signOut)
+  $('#sign-out-form').on('submit', submitEvents.logOut)
   $('#change-password-form').hide()
   $('#sign-out-form').hide()
 })
