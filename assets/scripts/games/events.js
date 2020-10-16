@@ -4,7 +4,9 @@ const api = require('./api')
 const ui = require('./ui')
 const createGame = (event) => {
   event.preventDefault()
-  console.log('talking to events.js')
+  api.createGame()
+    .then(ui.createGameSuccess)
+    .catch(ui.createGameFailure)
 }
 module.exports = {
   createGame
