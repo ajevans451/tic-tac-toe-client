@@ -12,7 +12,21 @@ const showGames = (event) => {
   event.preventDefault()
   console.log('showing games')
 }
+let currentPlayer = 'x'
+const onTileClick = (event) => {
+  event.preventDefault()
+  const box = $(event.target)
+  console.log('clicked')
+  box.css('background', 'transparent')
+  box.text(currentPlayer)
+  if (currentPlayer === 'O') {
+    currentPlayer = 'x'
+  } else {
+    currentPlayer = 'O'
+  }
+}
 module.exports = {
   createGame,
-  showGames
+  showGames,
+  onTileClick
 }

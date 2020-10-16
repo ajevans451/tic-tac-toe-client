@@ -15,9 +15,13 @@ $(() => {
   $('#sign-out-form').on('submit', submitAuthEvents.logOut)
   $('#create-game-form').on('submit', submitGameEvents.createGame)
   $('#show-games-form').on('submit', submitGameEvents.showGames)
+  $('.box').on('click', submitGameEvents.onTileClick)
   $('#change-password-form').hide()
   $('#sign-out-form').hide()
   $('#create-game-form').hide()
   $('#show-games-form').hide()
   $('#game-board').hide()
+
+
+
 })
