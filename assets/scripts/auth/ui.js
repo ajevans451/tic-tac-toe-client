@@ -27,13 +27,13 @@ const logInSuccess = function (response) {
 const logInFailure = function (error) {
   $('#message').text('Could not sign in, please try again')
 }
-const pwChangeSuccess = function(response) {
+const pwChangeSuccess = function (response) {
   $('#message').text('Password change successful')
 }
-const pwChangeFailure = function(error) {
+const pwChangeFailure = function (error) {
   $('#message').text('Password change failed, please retry')
 }
-const logOutSuccess = function(response) {
+const logOutSuccess = function (response) {
   $('#message').text('Signed out successfully')
   store.user = null
   $('#change-password-form').hide()

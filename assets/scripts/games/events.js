@@ -10,7 +10,9 @@ const createGame = (event) => {
 }
 const showGames = (event) => {
   event.preventDefault()
-  console.log('showing games')
+  api.showGames()
+    .then(ui.showGameSuccess)
+    .catch(ui.showGameFailure)
 }
 let currentPlayer = 'x'
 const onTileClick = (event) => {
@@ -19,10 +21,10 @@ const onTileClick = (event) => {
   console.log('clicked')
   box.css('background', 'transparent')
   box.text(currentPlayer)
-  if (currentPlayer === 'O') {
+  if (currentPlayer === 'o') {
     currentPlayer = 'x'
   } else {
-    currentPlayer = 'O'
+    currentPlayer = 'o'
   }
 }
 module.exports = {
