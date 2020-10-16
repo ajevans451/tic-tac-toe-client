@@ -19,16 +19,17 @@ const onTileClick = (event) => {
   event.preventDefault()
   const box = $(event.target)
   console.log('clicked')
-  box.css('background', 'transparent')
-  box.text(currentPlayer)
-  if (currentPlayer === 'o') {
-    currentPlayer = 'x'
+  if (box.text() === '') {
+    box.css('background', 'transparent')
+    box.text(currentPlayer)
+    currentPlayer = currentPlayer === 'o' ? 'x' : 'o'
   } else {
-    currentPlayer = 'o'
+    ui.spaceFilled()
   }
 }
 module.exports = {
   createGame,
   showGames,
-  onTileClick
+  onTileClick,
+  currentPlayer: currentPlayer
 }
