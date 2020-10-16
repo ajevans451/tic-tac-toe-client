@@ -18,8 +18,11 @@ let currentPlayer = 'x'
 const onTileClick = (event) => {
   event.preventDefault()
   const box = $(event.target)
+  const tileIndex = $(event.target).data('data-cell-index') // try value and .val() instead
+  console.log(tileIndex)
   console.log('clicked')
   if (box.text() === '') {
+    api.updateGame()
     box.css('background', 'transparent')
     box.text(currentPlayer)
     currentPlayer = currentPlayer === 'o' ? 'x' : 'o'
