@@ -9,8 +9,10 @@ const signUpFailure = function (error) {
 const logInSuccess = function (response) {
   $('#message').text('Signed in successfully')
   store.user = response.user
+  console.log(store.user.token)
   $('#change-password-form').show()
   $('#sign-out-form').show()
+  $('#create-game-form').show()
   $('#sign-up-form').hide()
   $('#sign-in-form').hide()
 }
@@ -30,6 +32,7 @@ const logOutSuccess = function(response) {
   $('#sign-out-form').hide()
   $('#sign-up-form').show()
   $('#sign-in-form').show()
+  $('create-game-form').hide()
 }
 const logOutFailure = function (error) {
   $('#message').text('Could not sign out, please try again')

@@ -41,9 +41,14 @@ const logOut = (event) => {
     .then(ui.logOutSuccess)
     .catch(ui.logOutFailure)
 }
+const createGame = (event) => {
+  event.preventDefault()
+  console.log('talking to events.js')
+}
 module.exports = {
   signUp,
   logIn,
   changePW,
-  logOut
+  logOut,
+  createGame
 }

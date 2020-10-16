@@ -12,6 +12,8 @@ $(() => {
   $('#sign-in-form').on('submit', submitEvents.logIn)
   $('#change-password-form').on('submit', submitEvents.changePW)
   $('#sign-out-form').on('submit', submitEvents.logOut)
+  $('#create-game-form').on('submit', console.log('create game submitting'))
   $('#change-password-form').hide()
   $('#sign-out-form').hide()
+  $('#create-game-form').hide()
 })
