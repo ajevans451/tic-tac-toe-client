@@ -1,1 +1,15 @@
 @import '~bootstrap/scss/bootstrap';
+#game-board{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 400px;
+  margin: 5px;
+}
+.game-cell {
+  border: 2px #000 solid;
+  padding-bottom: 32%;
+  margin-bottom: 2%;
+  width: 32%;
+  // https://tobiasahlin.com/blog/common-flexbox-patterns/#3x3-grid -- so helpful
+}
