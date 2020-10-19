@@ -11,6 +11,9 @@ const createGameFailure = function (error) {
   $('#game-message').text('Game creation failed, please try again')
 }
 const showGameSuccess = function (response) {
+  $('#games-index').show()
+  $('#index-message').show()
+  $('#game-message').show()
   $('#message').text('')
   $('#game-message').text('')
   $('#index-message').text('Your Games:')
@@ -19,7 +22,8 @@ const showGameSuccess = function (response) {
   $('#games-index').html('')
   game.forEach(function (currentGame) {
     const gameHTML = (`
-    <div class='index-cell col-3'> <h4>Cells: ${currentGame.cells}</h4>
+    <div class='index-cell col-3'>
+    <h5>Cells: ${currentGame.cells}</h5>
     <p>Game ID: ${currentGame._id} </p>
     <p>Is it over? ${currentGame.over} </p></div>`)
     $('#games-index').append(gameHTML)
