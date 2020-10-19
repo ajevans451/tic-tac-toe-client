@@ -18,16 +18,21 @@ let currentPlayer = 'x'
 const onTileClick = (event) => {
   event.preventDefault()
   const box = $(event.target)
-  const tileIndex = $(event.target).data('data-cell-index') // try value and .val() instead
-  console.log(tileIndex)
+  const tileIndex = $(event.target).attr('id')
   console.log('clicked')
+  gameState()
   if (box.text() === '') {
-    api.updateGame()
+    api.updateGame(tileIndex, currentPlayer)
     box.css('background', 'transparent')
     box.text(currentPlayer)
     currentPlayer = currentPlayer === 'o' ? 'x' : 'o'
   } else {
     ui.spaceFilled()
+  }
+}
+const gameState = (event) => {
+  for (let i=0; i<9; i++) {
+
   }
 }
 module.exports = {

@@ -20,8 +20,5 @@ $(() => {
   $('#sign-out-form').hide()
   $('#create-game-form').hide()
   $('#show-games-form').hide()
-  $('#game-board').hide()
-
-
-
+  // $('#game-board').hide()
 })
