@@ -5,6 +5,7 @@ const ui = require('./ui')
 const createGame = (event) => {
   event.preventDefault()
   $('.box').text('')
+  $('.box').css('background', '#F4FFF8')
   api.createGame()
     .then(ui.createGameSuccess)
     .catch(ui.createGameFailure)
@@ -23,7 +24,7 @@ const onTileClick = (event) => {
   const tileIndex = $(event.target).attr('id')
   console.log('clicked')
   gameState()
-  if (box.text() === '') {
+  if (box.text() === '' && gameOver === false) {
     api.updateGame(tileIndex, currentPlayer, gameOver)
     box.css('background', 'transparent')
     box.text(currentPlayer)
@@ -37,6 +38,9 @@ const gameState = (event) => {
   for (let i = 0; i < 9; i++) {
     const tileVal = $('#' + i).text()
     tileArray[i] = tileVal
+  } // rows
+  function checkEmpty (tile) {
+    return tile !== ''git
   }
   if (tileArray[0] === tileArray[1] === tileArray[2] && tileArray[0] !== '') {
     gameOver = true
@@ -47,6 +51,7 @@ const gameState = (event) => {
   } else if (tileArray[6] === tileArray[7] === tileArray[8] && tileArray[6] !== '') {
     gameOver = true
     return gameOver
+    // columns
   } else if (tileArray[0] === tileArray[3] === tileArray[6] && tileArray[0] !== '') {
     gameOver = true
     return gameOver
@@ -56,6 +61,15 @@ const gameState = (event) => {
   } else if (tileArray[2] === tileArray[5] === tileArray[8] && tileArray[2] !== '') {
     gameOver = true
     return gameOver
+    // diagonals
+  } else if (tileArray[0] === tileArray[4] === tileArray[8] && tileArray[0] !== '') {
+    gameOver = true
+    return gameOver
+  } else if (tileArray[2] === tileArray[4] === tileArray[6] && tileArray[2] !== '') {
+    gameOver = true
+    return gameOver
+  } else if (tileArray.every(checkEmpty) === true) {
+    gameOver = true
   } else {
     return gameOver
   }
