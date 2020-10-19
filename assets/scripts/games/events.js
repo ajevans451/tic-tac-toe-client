@@ -29,12 +29,12 @@ const onTileClick = (event) => {
   gameState()
   if (box.text() === '' && gameOver === false) {
     const data = `{
-      game: {
-        cell: {
-          index: tileIndex,
-          value: currentPlayer
+      "game": {
+        "cell": {
+          "index": ${tileIndex},
+          "value": ${currentPlayer}
         },
-        over: gameOver
+        "over": ${gameOver}
         }
       }`
     // console.log(data)

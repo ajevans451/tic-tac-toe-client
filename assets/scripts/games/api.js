@@ -19,23 +19,14 @@ const showGames = function (data) {
     }
   })
 }
-const updateGame = function (index, value, over) {
+const updateGame = function (data) {
   return $.ajax({
-    url: config.apiUrl + '/games',
-    method: 'GET',
-    id: store.game.id,
+    url: config.apiUrl + '/games/' + store.game._id,
+    method: 'PATCH',
     headers: {
       Authorization: 'Bearer ' + store.user.token
     },
-    data: {
-      game: {
-        cell: {
-          index: index,
-          value: value
-        },
-        over: over
-      }
-    }
+    data: data
   })
 }
 module.exports = {

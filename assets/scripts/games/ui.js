@@ -1,5 +1,6 @@
 'use strict'
 const store = require('./../store')
+// const events = require('./events.js')
 const createGameSuccess = function (response) {
   $('#message').text('')
   $('#game-message').text('New game created')
@@ -17,7 +18,7 @@ const showGameSuccess = function (response) {
   $('#message').text('')
   $('#game-message').text('')
   $('#index-message').text('Your Games:')
-  console.log(response)
+  // console.log(response)
   const game = response.games
   $('#games-index').html('')
   game.forEach(function (currentGame) {
@@ -37,11 +38,21 @@ const showGameFailure = function (response) {
 const spaceFilled = function () {
   $('#game-message').text('That space is already taken')
 }
+const gameUpdateSuccess = function (response) {
+  console.log(store.game)
+  $('#game-message').text(store.player + "'s turn taken successfully, next player's turn")
+}
+const gameUpdateFailure = function (error) {
+  console.log(store.game)
+  $('#game-message').text('Could not update game, try again')
+}
 
 module.exports = {
   createGameSuccess,
   createGameFailure,
   showGameSuccess,
   showGameFailure,
-  spaceFilled
+  spaceFilled,
+  gameUpdateSuccess,
+  gameUpdateFailure
 }
