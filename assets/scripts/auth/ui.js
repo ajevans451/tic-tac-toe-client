@@ -1,12 +1,5 @@
 'use strict'
 const store = require('./../store')
-/* const resetForms = function () {
-  console.log('reset form function firing')
-  // not resetting form fields -- find out why and fix
-  $('#change-password-form').val(null)
-  $('#sign-in-form').val(null)
-  $('#sign-up-form').val(null)
-} */
 const signUpSuccess = function (response) {
   $('#message').text('Thanks for signing up ' + response.user.email)
 }
@@ -22,7 +15,9 @@ const logInSuccess = function (response) {
   $('#create-game-form').show()
   $('#show-games-form').show()
   $('#sign-up-form').hide()
+  $('#sign-up-form').trigger('reset')
   $('#sign-in-form').hide()
+  $('#sign-in-form').trigger('reset')
 }
 const logInFailure = function (error) {
   $('#message').text('Could not sign in, please try again')
@@ -37,6 +32,7 @@ const logOutSuccess = function (response) {
   $('#message').text('Signed out successfully')
   store.user = null
   $('#change-password-form').hide()
+  $('#change-password-form').trigger('reset')
   $('#sign-out-form').hide()
   $('#sign-up-form').show()
   $('#sign-in-form').show()
