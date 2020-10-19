@@ -22,10 +22,23 @@ const onTileClick = (event) => {
   event.preventDefault()
   const box = $(event.target)
   const tileIndex = $(event.target).attr('id')
-  console.log('clicked')
+  // console.log('clicked')
+  console.log(currentPlayer)
   gameState()
   if (box.text() === '' && gameOver === false) {
-    api.updateGame(tileIndex, currentPlayer, gameOver)
+    const data = `{
+      game: {
+        cell: {
+          index: tileIndex,
+          value: currentPlayer
+        },
+        over: gameOver
+        }
+      }`
+    // console.log(data)
+    api.updateGame(data)
+      .then(ui.gameUpdateSuccess)
+      .catch(ui.gameUpdateFailure)
     box.css('background', 'transparent')
     box.text(currentPlayer)
     currentPlayer = currentPlayer === 'o' ? 'x' : 'o'
@@ -38,10 +51,10 @@ const gameState = (event) => {
   for (let i = 0; i < 9; i++) {
     const tileVal = $('#' + i).text()
     tileArray[i] = tileVal
-  } // rows
-  function checkEmpty (tile) {
-    return tile !== ''git
   }
+  function checkEmpty (tile) {
+    return tile !== ''
+  } // rows
   if (tileArray[0] === tileArray[1] === tileArray[2] && tileArray[0] !== '') {
     gameOver = true
     return gameOver
