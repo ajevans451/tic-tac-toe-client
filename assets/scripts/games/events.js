@@ -4,6 +4,7 @@ const api = require('./api')
 const ui = require('./ui')
 const createGame = (event) => {
   event.preventDefault()
+  $('.box').text('')
   api.createGame()
     .then(ui.createGameSuccess)
     .catch(ui.createGameFailure)
@@ -15,6 +16,7 @@ const showGames = (event) => {
     .catch(ui.showGameFailure)
 }
 let currentPlayer = 'x'
+let gameOver = false
 const onTileClick = (event) => {
   event.preventDefault()
   const box = $(event.target)
@@ -22,7 +24,7 @@ const onTileClick = (event) => {
   console.log('clicked')
   gameState()
   if (box.text() === '') {
-    api.updateGame(tileIndex, currentPlayer)
+    api.updateGame(tileIndex, currentPlayer, gameOver)
     box.css('background', 'transparent')
     box.text(currentPlayer)
     currentPlayer = currentPlayer === 'o' ? 'x' : 'o'
@@ -31,8 +33,31 @@ const onTileClick = (event) => {
   }
 }
 const gameState = (event) => {
-  for (let i=0; i<9; i++) {
-
+  const tileArray = []
+  for (let i = 0; i < 9; i++) {
+    const tileVal = $('#' + i).text()
+    tileArray[i] = tileVal
+  }
+  if (tileArray[0] === tileArray[1] === tileArray[2] && tileArray[0] !== '') {
+    gameOver = true
+    return gameOver
+  } else if (tileArray[3] === tileArray[4] === tileArray[5] && tileArray[3] !== '') {
+    gameOver = true
+    return gameOver
+  } else if (tileArray[6] === tileArray[7] === tileArray[8] && tileArray[6] !== '') {
+    gameOver = true
+    return gameOver
+  } else if (tileArray[0] === tileArray[3] === tileArray[6] && tileArray[0] !== '') {
+    gameOver = true
+    return gameOver
+  } else if (tileArray[1] === tileArray[4] === tileArray[7] && tileArray[1] !== '') {
+    gameOver = true
+    return gameOver
+  } else if (tileArray[2] === tileArray[5] === tileArray[8] && tileArray[2] !== '') {
+    gameOver = true
+    return gameOver
+  } else {
+    return gameOver
   }
 }
 module.exports = {
