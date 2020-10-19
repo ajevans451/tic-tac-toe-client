@@ -2,6 +2,7 @@
 // const formFields = require('./../../../lib/get-form-fields')
 const api = require('./api')
 const ui = require('./ui')
+const store = require('./../store')
 const createGame = (event) => {
   event.preventDefault()
   $('.box').text('')
@@ -17,13 +18,14 @@ const showGames = (event) => {
     .catch(ui.showGameFailure)
 }
 let currentPlayer = 'x'
+store.player = currentPlayer
 let gameOver = false
 const onTileClick = (event) => {
   event.preventDefault()
   const box = $(event.target)
   const tileIndex = $(event.target).attr('id')
   // console.log('clicked')
-  console.log(currentPlayer)
+  // console.log(currentPlayer)
   gameState()
   if (box.text() === '' && gameOver === false) {
     const data = `{
@@ -41,7 +43,11 @@ const onTileClick = (event) => {
       .catch(ui.gameUpdateFailure)
     box.css('background', 'transparent')
     box.text(currentPlayer)
+    store.player = currentPlayer.toUpperCase()
     currentPlayer = currentPlayer === 'o' ? 'x' : 'o'
+    return currentPlayer
+  } else if (gameOver === true) {
+
   } else {
     ui.spaceFilled()
   }
