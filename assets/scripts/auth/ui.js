@@ -30,6 +30,15 @@ const logOutSuccess = function(response) {
   $('#sign-out-form').hide()
   $('#sign-up-form').show()
   $('#sign-in-form').show()
+  $('#create-game-form').hide()
+  $('#show-games-form').hide()
+  $('#game-board').hide()
+  $('#games-index').hide()
+  $('#index-message').hide()
+  $('#game-message').hide()
+  $('#index-message').trigger('reset')
+  $('#game-message').trigger('reset')
+
 }
 const logOutFailure = function (error) {
   $('#message').text('Could not sign out, please try again')
