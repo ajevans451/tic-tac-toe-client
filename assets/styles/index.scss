@@ -2,6 +2,7 @@
 body {
   background-color: #F4FFF8;
   color: #320E3B;
+  margin: 5px;
 }
 .container {
   height: 100vh;
@@ -38,13 +39,4 @@ body {
   &:hover {
     background-color: rgba(238,150,75, 0.2);
     }
-}
-.index-cell {
-  border: 1px solid #774936;
-}
-@media (max-width: 800px) {
-  .index-cell{
-    word-wrap: break-word;
-    font-size: 12px;
-  }
 }
