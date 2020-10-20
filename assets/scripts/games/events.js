@@ -28,15 +28,15 @@ const onTileClick = (event) => {
   // console.log(currentPlayer)
   gameState()
   if (box.text() === '' && gameOver === false) {
-    const data = `{
-      "game": {
-        "cell": {
-          "index": ${tileIndex},
-          "value": ${currentPlayer}
+    const data = {
+      game: {
+        cell: {
+          index: tileIndex,
+          value: currentPlayer
         },
-        "over": ${gameOver}
-        }
-      }`
+        over: gameOver
+      }
+    }
     // console.log(data)
     api.updateGame(data)
       .then(ui.gameUpdateSuccess)
