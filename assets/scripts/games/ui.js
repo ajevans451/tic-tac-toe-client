@@ -21,14 +21,15 @@ const showGameSuccess = function (response) {
   // console.log(response)
   const game = response.games
   $('#games-index').html('')
+  let numOfGames = 0
   game.forEach(function (currentGame) {
-    const gameHTML = (`
-    <div class='index-cell col-3'>
+    /* <div class='index-cell col-3'>
     <h5>Cells: ${currentGame.cells}</h5>
     <p>Game ID: ${currentGame._id} </p>
-    <p>Is it over? ${currentGame.over} </p></div>`)
-    $('#games-index').append(gameHTML)
+    <p>Is it over? ${currentGame.over} </p></div>`) */
+    numOfGames += 1
 })
+  $('#games-index').text(numOfGames + ' games played')
 }
 
 const showGameFailure = function (response) {
@@ -38,12 +39,24 @@ const showGameFailure = function (response) {
 const spaceFilled = function () {
   $('#game-message').text('That space is already taken')
 }
+const gameFinished = function () {
+  $('#game-message').text('The game is already over')
+}
 const gameUpdateSuccess = function (response) {
-  console.log(store.game)
+  // console.log(store.game)
   $('#game-message').text(store.player + "'s turn taken successfully, next player's turn")
 }
 const gameUpdateFailure = function (error) {
-  console.log(store.game)
+  // console.log(store.game)
+  $('#game-message').text('Could not update game, try again')
+}
+const showUpdateSuccess = (response) => {
+  console.log(response)
+  console.log(response.game.cells)
+  store.game.cells = response.game.cells
+}
+const showUpdateFailure = function (error) {
+  // console.log(store.game)
   $('#game-message').text('Could not update game, try again')
 }
 
@@ -53,6 +66,9 @@ module.exports = {
   showGameSuccess,
   showGameFailure,
   spaceFilled,
+  gameFinished,
   gameUpdateSuccess,
-  gameUpdateFailure
+  gameUpdateFailure,
+  showUpdateSuccess,
+  showUpdateFailure
 }

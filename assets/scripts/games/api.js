@@ -10,7 +10,7 @@ const createGame = function (data) {
     }
   })
 }
-const showGames = function (data) {
+const showGames = function () {
   return $.ajax({
     url: config.apiUrl + '/games',
     method: 'GET',
@@ -29,8 +29,18 @@ const updateGame = function (data) {
     data: data
   })
 }
+const showGameUpdate = function () {
+  return $.ajax({
+    url: config.apiUrl + '/games/' + store.game._id,
+    method: 'GET',
+    headers: {
+      Authorization: 'Bearer ' + store.user.token
+    }
+  })
+}
 module.exports = {
   createGame,
   showGames,
-  updateGame
+  updateGame,
+  showGameUpdate
 }
