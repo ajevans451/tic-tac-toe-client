@@ -1,5 +1,6 @@
 'use strict'
 const store = require('./../store')
+const events = require('./events')
 // const events = require('./events.js')
 const createGameSuccess = function (response) {
   $('#message').text('')
@@ -51,8 +52,8 @@ const gameUpdateFailure = function (error) {
   $('#game-message').text('Could not update game, try again')
 }
 const showUpdateSuccess = (response) => {
-  console.log(response)
-  console.log(response.game.cells)
+  // console.log(response)
+  // console.log(response.game.cells)
   store.game.cells = response.game.cells
 }
 const showUpdateFailure = function (error) {

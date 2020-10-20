@@ -26,7 +26,6 @@ const onTileClick = (event) => {
   const tileIndex = $(event.target).attr('id')
   // console.log('clicked')
   // console.log(currentPlayer)
-  gameState()
   if (box.text() === '' && gameOver === false) {
     const data = {
       game: {
@@ -44,20 +43,22 @@ const onTileClick = (event) => {
     box.css('background', 'transparent')
     box.text(currentPlayer)
     store.player = currentPlayer.toUpperCase()
+    api.showGameUpdate()
+      .then(ui.showUpdateSuccess)
+      .then(gameState)
+      .catch(ui.showUpdateFailure)
     currentPlayer = currentPlayer === 'o' ? 'x' : 'o'
     return currentPlayer
   } else if (gameOver === true) {
-
+    ui.gameFinished()
   } else {
     ui.spaceFilled()
   }
 }
-const gameState = (event) => {
-  const tileArray = []
-  for (let i = 0; i < 9; i++) {
-    const tileVal = $('#' + i).text()
-    tileArray[i] = tileVal
-  }
+const gameState = function (event) {
+  const tileArray = store.game.cells
+  // console.log(tileArray)
+  console.log(gameOver)
   function checkEmpty (tile) {
     return tile !== ''
   } // rows
@@ -92,10 +93,44 @@ const gameState = (event) => {
   } else {
     return gameOver
   }
+  /* if ($('#0').text() === $('#1').text() === $('#2').text() && $('#0').text() !== '') {
+    gameOver = true
+    return gameOver
+  } else if ($('#3').text() === $('#4').text() === $('#5').text() && $('#3').text() !== '') {
+    gameOver = true
+    return gameOver
+  } else if ($('#6').text() === $('#7').text() === $('#8').text() && $('#6').text() !== '') {
+    gameOver = true
+    return gameOver
+    // columns
+  } else if ($('#0').text() === $('#3').text() === $('#6').text() && $('#0').text() !== '') {
+    gameOver = true
+    return gameOver
+  } else if ($('#1').text() === $('#4').text() === $('#7').text() && $('#1').text() !== '') {
+    gameOver = true
+    return gameOver
+  } else if ($('#2').text() === $('#5').text() === $('#8').text() && $('#2').text() !== '') {
+    gameOver = true
+    return gameOver
+    // diagonals
+  } else if ($('#0').text() === $('#4').text() === $('#8').text() && $('#0').text() !== '') {
+    gameOver = true
+    return gameOver
+  } else if ($('#2').text() === $('#4').text() === $('#6').text() && $('#2').text() !== '') {
+    gameOver = true
+    return gameOver
+  } else if ($('#0').text() !== '' && $('#1').text() !== '' && $('#2').text() !== '' && $('#3').text() !== '' && $('#4').text() !== '' && $('#5').text() !== '' && $('#6').text() !== '' && $('#7').text() !== '' && $('#8').text() !== '') {
+    gameOver = true
+    return gameOver
+  } else {
+    gameOver = false
+    return gameOver
+  } */
 }
 module.exports = {
   createGame,
   showGames,
   onTileClick,
-  currentPlayer: currentPlayer
+  currentPlayer: currentPlayer,
+  gameState
 }
