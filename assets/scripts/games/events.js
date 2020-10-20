@@ -65,6 +65,10 @@ const gameState = function (event) {
   console.log(gameOver)
   function checkEmpty (tile) {
     return tile !== ''
+  }
+  function checkEqual (num1, num2, num3) {
+    const equal = !!(tileArray[num1] === tileArray[num2] === tileArray[num3] && tileArray[num1] !== '')
+    return equal
   } // rows
   if (tileArray[0] === tileArray[1] === tileArray[2] && tileArray[0] !== '') {
     gameOver = true
