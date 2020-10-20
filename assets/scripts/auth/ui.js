@@ -9,7 +9,7 @@ const signUpFailure = function (error) {
 const logInSuccess = function (response) {
   $('#message').text('Signed in successfully')
   store.user = response.user
-  console.log(store.user.token)
+  // console.log(store.user.token)
   $('#change-password-form').show()
   $('#sign-out-form').show()
   $('#create-game-form').show()
