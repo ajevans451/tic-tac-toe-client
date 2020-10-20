@@ -41,7 +41,7 @@ const spaceFilled = function () {
   $('#game-message').text('That space is already taken')
 }
 const gameFinished = function () {
-  $('#game-message').text('The game is already over')
+  $('#game-message').text('The game is already over, please create a new game')
 }
 const gameUpdateSuccess = function (response) {
   // console.log(store.game)
