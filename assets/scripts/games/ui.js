@@ -6,6 +6,8 @@ const createGameSuccess = function (response) {
   $('#message').text('')
   $('#game-message').text('New game created')
   $('#game-board').show()
+  $('#games-index').hide()
+  $('#index-message').hide()
   store.game = response.game
 }
 const createGameFailure = function (error) {

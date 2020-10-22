@@ -2,6 +2,7 @@
 const store = require('./../store')
 const signUpSuccess = function (response) {
   $('#message').text('Thanks for signing up ' + response.user.email)
+  $('#sign-up-form').trigger('reset')
 }
 const signUpFailure = function (error) {
   $('#message').text('Sign up failed, please retry')
@@ -24,6 +25,7 @@ const logInFailure = function (error) {
 }
 const pwChangeSuccess = function (response) {
   $('#message').text('Password change successful')
+  $('#change-password-form').trigger('reset')
 }
 const pwChangeFailure = function (error) {
   $('#message').text('Password change failed, please retry')
@@ -32,6 +34,7 @@ const logOutSuccess = function (response) {
   $('#message').text('Signed out successfully')
   store.user = null
   $('#change-password-form').hide()
+  // finally!!!
   $('#change-password-form').trigger('reset')
   $('#sign-out-form').hide()
   $('#sign-up-form').show()
