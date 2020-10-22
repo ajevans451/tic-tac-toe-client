@@ -53,7 +53,7 @@ const onTileClick = (event) => {
     currentPlayer = currentPlayer === 'o' ? 'x' : 'o'
     return currentPlayer
   } else if (gameOver === true) {
-    console.log(gameOver)
+    // console.log(gameOver)
     ui.gameFinished()
   } else {
     ui.spaceFilled()
@@ -61,8 +61,8 @@ const onTileClick = (event) => {
 }
 const gameState = function (event) {
   const tileArray = store.game.cells
-  console.log(tileArray[0] + ' ' + tileArray[1] + ' ' + tileArray[2] + ' ' + tileArray[3] + ' ' + tileArray[4] + ' ' + tileArray[5] + ' ' + tileArray[6] + ' ' + tileArray[7] + ' ' + tileArray[8])
-  console.log(gameOver)
+  // console.log(tileArray[0] + ' ' + tileArray[1] + ' ' + tileArray[2] + ' ' + tileArray[3] + ' ' + tileArray[4] + ' ' + tileArray[5] + ' ' + tileArray[6] + ' ' + tileArray[7] + ' ' + tileArray[8])
+  // console.log(gameOver)
   function checkEmpty (tile) {
     return tile !== ''
   }
