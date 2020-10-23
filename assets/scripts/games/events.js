@@ -66,46 +66,60 @@ const gameState = function (event) {
   function checkEmpty (tile) {
     return tile !== ''
   }
-  /* function checkEqual (num1, num2, num3) {
-    const equal = !!(tileArray[num1] === tileArray[num2] === tileArray[num3] && tileArray[num1] !== '')
-    return equal
-  } */
   // rows
   if ((tileArray[0] !== '') && (tileArray[0] === tileArray[1]) && (tileArray[0] === tileArray[2])) {
   // if (tileArray[0] === tileArray[1] === tileArray[2] && tileArray[0] !== '') {
+    // console.log('chicken nuggets')
+    $('#game-message').text(tileArray[0].toUpperCase() + ' wins! Play again by creating a new game')
     gameOver = true
     return gameOver
   } else if ((tileArray[3] !== '') && (tileArray[3] === tileArray[4]) && (tileArray[3] === tileArray[5])) {
     // } else if (tileArray[3] === tileArray[4] === tileArray[5] && tileArray[3] !== '') {
+    // console.log('chicken nuggets')
+    $('#game-message').text(tileArray[3].toUpperCase() + ' wins! Play again by creating a new game')
     gameOver = true
     return gameOver
   } else if ((tileArray[6] !== '') && (tileArray[6] === tileArray[7]) && (tileArray[6] === tileArray[8])) {
   // } else if (tileArray[6] === tileArray[7] === tileArray[8] && tileArray[6] !== '') {
+    // console.log('chicken nuggets')
+    $('#game-message').text(tileArray[6].toUpperCase() + ' wins! Play again by creating a new game')
     gameOver = true
     return gameOver
     // columns
   } else if ((tileArray[0] !== '') && (tileArray[0] === tileArray[3]) && (tileArray[0] === tileArray[6])) {
   // } else if (tileArray[0] === tileArray[3] === tileArray[6] && tileArray[0] !== '') {
+    // console.log('chicken nuggets')
+    $('#game-message').text(tileArray[0].toUpperCase() + ' wins! Play again by creating a new game')
     gameOver = true
     return gameOver
   } else if ((tileArray[1] !== '') && (tileArray[1] === tileArray[4]) && (tileArray[1] === tileArray[7])) {
   // } else if (tileArray[1] === tileArray[4] === tileArray[7] && tileArray[1] !== '') {
+    // console.log('chicken nuggets')
+    $('#game-message').text(tileArray[1].toUpperCase() + ' wins! Play again by creating a new game')
     gameOver = true
     return gameOver
   } else if ((tileArray[2] !== '') && (tileArray[2] === tileArray[5]) && (tileArray[2] === tileArray[8])) {
   // } else if (tileArray[2] === tileArray[5] === tileArray[8] && tileArray[2] !== '') {
+    // console.log('chicken nuggets')
+    $('#game-message').text(tileArray[2].toUpperCase() + ' wins! Play again by creating a new game')
     gameOver = true
     return gameOver
     // diagonals
   } else if ((tileArray[0] !== '') && (tileArray[0] === tileArray[4]) && (tileArray[0] === tileArray[8])) {
   // } else if (tileArray[0] === tileArray[4] === tileArray[8] && tileArray[0] !== '') {
+    // console.log('chicken nuggets')
+    $('#game-message').text(tileArray[0].toUpperCase() + ' wins! Play again by creating a new game')
     gameOver = true
     return gameOver
   } else if ((tileArray[2] !== '') && (tileArray[2] === tileArray[4]) && (tileArray[2] === tileArray[6])) {
   // } else if (tileArray[2] === tileArray[4] === tileArray[6] && tileArray[2] !== '') {
+    // console.log('chicken nuggets')
+    $('#game-message').text(tileArray[2].toUpperCase() + ' wins! Play again by creating a new game')
     gameOver = true
     return gameOver
   } else if (tileArray.every(checkEmpty) === true) {
+    // console.log('chicken nuggets')
+    $('#game-message').text("It's a tie! Play again by creating a new game")
     gameOver = true
   } else {
     return gameOver
