@@ -47,7 +47,7 @@ const gameFinished = function () {
 }
 const gameUpdateSuccess = function (response) {
   // console.log(store.game)
-  $('#game-message').text(store.player + " just took their turn, next player's turn")
+  $('#game-message').text(store.player + " just took their turn, please wait a second until next player's turn")
 }
 const gameUpdateFailure = function (error) {
   // console.log(store.game)

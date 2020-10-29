@@ -3,6 +3,18 @@
 const api = require('./api')
 const ui = require('./ui')
 const store = require('./../store')
+function currentTime () {
+  const dt = new Date()
+  const utcDate = dt.toUTCString()
+  console.log(utcDate)
+}
+function sleep(milliseconds) {
+  const date = Date.now()
+  let currentDate = null
+  do {
+    currentDate = Date.now()
+  } while (currentDate - date < milliseconds)
+}
 const createGame = (event) => {
   event.preventDefault()
   $('.box').text('')
@@ -41,13 +53,18 @@ const onTileClick = (event) => {
     }
     // console.log(data)
     api.updateGame(data)
+      // .then(currentTime(), console.log('prePatch'))
       .then(ui.gameUpdateSuccess)
+      // .then(currentTime(), console.log('postPatch'))
       .catch(ui.gameUpdateFailure)
+    sleep(100) // pause (under some circumstances get request returns before patch, shows wrong state)
     box.css('background', 'transparent')
     box.text(currentPlayer)
     store.player = currentPlayer.toUpperCase()
     api.showGameUpdate()
+      // .then(currentTime(), console.log('preGet'))
       .then(ui.showUpdateSuccess)
+      // .then(currentTime(), console.log('postGet'))
       .then(gameState)
       .catch(ui.showUpdateFailure)
     currentPlayer = currentPlayer === 'o' ? 'x' : 'o'
@@ -68,95 +85,54 @@ const gameState = function (event) {
   }
   // rows
   if ((tileArray[0] !== '') && (tileArray[0] === tileArray[1]) && (tileArray[0] === tileArray[2])) {
-  // if (tileArray[0] === tileArray[1] === tileArray[2] && tileArray[0] !== '') {
-    // console.log('chicken nuggets')
+    // console.log('top row')
     $('#game-message').text(tileArray[0].toUpperCase() + ' wins! Play again by creating a new game')
     gameOver = true
     return gameOver
   } else if ((tileArray[3] !== '') && (tileArray[3] === tileArray[4]) && (tileArray[3] === tileArray[5])) {
-    // } else if (tileArray[3] === tileArray[4] === tileArray[5] && tileArray[3] !== '') {
-    // console.log('chicken nuggets')
+    // console.log('middle row')
     $('#game-message').text(tileArray[3].toUpperCase() + ' wins! Play again by creating a new game')
     gameOver = true
     return gameOver
   } else if ((tileArray[6] !== '') && (tileArray[6] === tileArray[7]) && (tileArray[6] === tileArray[8])) {
-  // } else if (tileArray[6] === tileArray[7] === tileArray[8] && tileArray[6] !== '') {
-    // console.log('chicken nuggets')
+    // console.log('bottom row')
     $('#game-message').text(tileArray[6].toUpperCase() + ' wins! Play again by creating a new game')
     gameOver = true
     return gameOver
     // columns
   } else if ((tileArray[0] !== '') && (tileArray[0] === tileArray[3]) && (tileArray[0] === tileArray[6])) {
-  // } else if (tileArray[0] === tileArray[3] === tileArray[6] && tileArray[0] !== '') {
-    // console.log('chicken nuggets')
+    // console.log('left column')
     $('#game-message').text(tileArray[0].toUpperCase() + ' wins! Play again by creating a new game')
     gameOver = true
     return gameOver
   } else if ((tileArray[1] !== '') && (tileArray[1] === tileArray[4]) && (tileArray[1] === tileArray[7])) {
-  // } else if (tileArray[1] === tileArray[4] === tileArray[7] && tileArray[1] !== '') {
-    // console.log('chicken nuggets')
+    // console.log('middle column')
     $('#game-message').text(tileArray[1].toUpperCase() + ' wins! Play again by creating a new game')
     gameOver = true
     return gameOver
   } else if ((tileArray[2] !== '') && (tileArray[2] === tileArray[5]) && (tileArray[2] === tileArray[8])) {
-  // } else if (tileArray[2] === tileArray[5] === tileArray[8] && tileArray[2] !== '') {
-    // console.log('chicken nuggets')
+    // console.log('right column')
     $('#game-message').text(tileArray[2].toUpperCase() + ' wins! Play again by creating a new game')
     gameOver = true
     return gameOver
     // diagonals
   } else if ((tileArray[0] !== '') && (tileArray[0] === tileArray[4]) && (tileArray[0] === tileArray[8])) {
-  // } else if (tileArray[0] === tileArray[4] === tileArray[8] && tileArray[0] !== '') {
-    // console.log('chicken nuggets')
+    // console.log('\\')
     $('#game-message').text(tileArray[0].toUpperCase() + ' wins! Play again by creating a new game')
     gameOver = true
     return gameOver
   } else if ((tileArray[2] !== '') && (tileArray[2] === tileArray[4]) && (tileArray[2] === tileArray[6])) {
-  // } else if (tileArray[2] === tileArray[4] === tileArray[6] && tileArray[2] !== '') {
-    // console.log('chicken nuggets')
+    // console.log('/')
     $('#game-message').text(tileArray[2].toUpperCase() + ' wins! Play again by creating a new game')
     gameOver = true
     return gameOver
   } else if (tileArray.every(checkEmpty) === true) {
-    // console.log('chicken nuggets')
+    // console.log('tie')
     $('#game-message').text("It's a tie! Play again by creating a new game")
     gameOver = true
   } else {
     return gameOver
   }
-  /* if ($('#0').text() === $('#1').text() === $('#2').text() && $('#0').text() !== '') {
-    gameOver = true
-    return gameOver
-  } else if ($('#3').text() === $('#4').text() === $('#5').text() && $('#3').text() !== '') {
-    gameOver = true
-    return gameOver
-  } else if ($('#6').text() === $('#7').text() === $('#8').text() && $('#6').text() !== '') {
-    gameOver = true
-    return gameOver
-    // columns
-  } else if ($('#0').text() === $('#3').text() === $('#6').text() && $('#0').text() !== '') {
-    gameOver = true
-    return gameOver
-  } else if ($('#1').text() === $('#4').text() === $('#7').text() && $('#1').text() !== '') {
-    gameOver = true
-    return gameOver
-  } else if ($('#2').text() === $('#5').text() === $('#8').text() && $('#2').text() !== '') {
-    gameOver = true
-    return gameOver
-    // diagonals
-  } else if ($('#0').text() === $('#4').text() === $('#8').text() && $('#0').text() !== '') {
-    gameOver = true
-    return gameOver
-  } else if ($('#2').text() === $('#4').text() === $('#6').text() && $('#2').text() !== '') {
-    gameOver = true
-    return gameOver
-  } else if ($('#0').text() !== '' && $('#1').text() !== '' && $('#2').text() !== '' && $('#3').text() !== '' && $('#4').text() !== '' && $('#5').text() !== '' && $('#6').text() !== '' && $('#7').text() !== '' && $('#8').text() !== '') {
-    gameOver = true
-    return gameOver
-  } else {
-    gameOver = false
-    return gameOver
-  } */
 }
 const resetGame = (response) => {
   if (store.game.cells !== []) {
