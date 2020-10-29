@@ -1,10 +1,11 @@
 # Tic-Tac-Toe Project
 This application is a simple game of Tic-Tac-Toe, and allows the user to play a game against themselves in their browser.
 ### Important Links
-- deployed Client
+- [Deployed Client](https://ajevans451.github.io/tic-tac-toe-client/)
 -
 ### Planning Story
 #### User Stories
+
 #### Technologies Used
 - jQuery
 - HTML
@@ -18,3 +19,4 @@ This application is a simple game of Tic-Tac-Toe, and allows the user to play a 
 - I want to add additional styling to the board and the background.
 
 #### Wireframe
+![Wireframe in Pencil](https://media.git.generalassemb.ly/user/31380/files/80571680-0d83-11eb-915a-393581df4674)
