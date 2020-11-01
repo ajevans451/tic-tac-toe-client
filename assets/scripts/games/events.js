@@ -23,6 +23,7 @@ const createGame = (event) => {
     .then(ui.createGameSuccess)
     // .then(console.log(store.game.cells))
     .then(resetGame)
+    .then(currentPlayer = 'x')
     // .then(console.log(store.game.cells))
     .catch(ui.createGameFailure)
 }

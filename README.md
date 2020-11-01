@@ -5,6 +5,15 @@ This application is a simple game of Tic-Tac-Toe, and allows the user to play a 
 -
 ### Planning Story
 #### User Stories
+- As a user, I would like to be able to sign up / sign in with an email and password.
+- As a signed in user, I want to be able to change my password and sign out.
+- As a signed in user, I would like to be able to create a new game.
+- As a signed in user, I want to be able to show how many games I've played.
+- As a player, I want to be able to place an "x" on an empty tile.
+- As a player, I would like to be able switch between "x" and "o" as I click on tiles.
+- As a player, I would like to be notified when I have won or lost.
+- As a signed in user, I want to not be able to add to the game once it is over.
+- As a signed in user, I want to be able to play again.
 
 #### Technologies Used
 - jQuery
