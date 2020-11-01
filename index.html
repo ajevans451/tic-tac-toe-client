@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Tic-Tac-Toe Client</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <!-- Do not add `link` tags-->
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+      <!-- Do not add `script` tags-->
+      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+    </head>
+    <body>
+      <h1>Tic-Tac-Toe Game</h1>
+      <p id='message'></p>
+      <form id='sign-up-form'>
+        <h3>Sign Up</h3>
+        <label for='sign-up-email'>Email:</label>
+          <input required id='sign-up-email' type='email' name='credentials[email]' placeholder="Email">
+        <label for='sign-up-password'>Password:</label>
+          <input required id='sign-up-password' type='password' name='credentials[password]' placeholder="Password">
+        <label for='sign-up-password-confirm'>Password Confirmation:</label>
+          <input required id='sign-up-password-confirm' type='password' name='credentials[password_confirmation]' placeholder="Confirm Password">
+          <input type='submit' value='Sign up'>
+      </form>
+      <form id='sign-in-form'>
+        <h3>Sign In</h3>
+        <label for='sign-in-email'>Email:</label>
+          <input required id='sign-in-email' type='email' name='credentials[email]' placeholder="Email">
+        <label for='sign-in-password'>Password:</label>
+          <input required id='sign-in-password' type='password' name='credentials[password]' placeholder="Password">
+          <input type='submit' value='Sign in'>
+      </form>
+      <form id='change-password-form'>
+        <h3>Change Password</h3>
+        <label for="old-password">Current Password:</label>
+          <input id="old-password" type="password" name="passwords[old]" placeholder="Current Password">
+        <label for="new-password">New Password:</label>
+          <input id="new-password" type="password" name="passwords[new]" placeholder="New Password">
+        <input type='submit' value='Change password'>
+      </form>
+      <form id='sign-out-form'>
+        <h3>Sign Out</h3>
+        <input type='submit' value='Sign out'>
+      </form>
+      <form id='create-game-form'>
+        <h3>Create New Game</h3>
+        <input type='submit' value='New game'>
+      </form>
+      <p id='game-message'></p>
+      <section class='container' id='game-board'>
+        <div class='row board h-100'>
+        <div class='col-4 box' id='0'></div>
+        <div class='col-4 box' id='1'></div>
+        <div class='col-4 box' id='2'></div>
+        <div class='col-4 box' id='3'></div>
+        <div class='col-4 box' id='4'></div>
+        <div class='col-4 box' id='5'></div>
+        <div class='col-4 box' id='6'></div>
+        <div class='col-4 box' id='7'></div>
+        <div class='col-4 box' id='8'></div>
+      </div>
+      </section>
+      <section>
+        <form id='show-games-form'>
+          <h3>Show Played Games</h3>
+          <input type='submit' value='Show Games'>
+        </form>
+        <p id='index-message'></p>
+      </section>
+      <section class='container'>
+        <div class='row' id='games-index'></div>
+      </section>
+
+    </body>
+</html>
